@@ -6,5 +6,5 @@ return [
      * API NONCE Header Key
      * ----------------------------------------------------------------
      */
-    "nonce_key" => "nonce",
+    "nonce_key" => "X-Nonce",
 ];

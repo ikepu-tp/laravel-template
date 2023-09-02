@@ -25,5 +25,8 @@ class LaravelTemplateServiceProvider extends ServiceProvider
             ExceptionCommand::class,
             ResourceCommand::class,
         ]);
+        $this->publishes([
+            __DIR__ . '/config/template.php' => base_path('config/template.php'),
+        ], "laravel-tempalte-config");
     }
 }
