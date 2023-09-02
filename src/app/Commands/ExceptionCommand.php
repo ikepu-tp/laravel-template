@@ -26,7 +26,7 @@ class ExceptionCommand extends Command
      */
     public function handle()
     {
-        if (!file_exists(base_path("app/Exceptions/ErrorException.php"))) copy(__DIR__ . "/../Exceptions/ErrorException.php", base_path("app/Exceptions/ErrorExceptions.php"));
+        if (!file_exists(base_path("app/Exceptions/ErrorException.php"))) copy(__DIR__ . "/../Exceptions/ErrorException.php", base_path("app/Exceptions/ErrorException.php"));
         $this->info(base_path("app/Exceptions/ErrorException.php") . " was copied.");
         (new Filesystem)->copyDirectory(__DIR__ . "/../Exceptions/Error", base_path("app/Exceptions/Error"));
         $this->info(base_path("app/Exceptions/") . " was copied.");
