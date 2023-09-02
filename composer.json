@@ -1,0 +1,36 @@
+{
+    "name": "ikepu-tp/laravel-template",
+    "description": "",
+    "type": "library",
+    "keywords": [
+        "laravel"
+    ],
+    "homepage": "https://rainbow-patissier.com",
+    "support": {
+        "issues": "https://github.com/ikepu-tp/laravel-template/issues",
+        "source": "https://github.com/ikepu-tp/laravel-template"
+    },
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^10.8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ikepu_tp\\LaravelTemplate\\": "./src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yuma Ikeda",
+            "email": "programing@rainbow-patissier.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ikepu_tp\\LaravelTemplate\\LaravelTemplateServiceProvider"
+            ]
+        }
+    }
+}
