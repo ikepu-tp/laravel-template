@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Exceptions\ErrorException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -118,6 +119,24 @@ class Resource extends JsonResource
             (new ErrorResource($abstract, $title, $code, $messages))->createArray(),
         );
         return $resource->createResponse();
+    }
+    /**
+     * 失敗レスポンス作成
+     *
+     * @param string $abstract
+     * @param string $title
+     * @param integer $code
+     * @param array $messages
+     * @return JsonResponse
+     */
+    static public function failFromException(ErrorException $errorException): JsonResponse
+    {
+        return self::fail(
+            $errorException->getAbstract(),
+            $errorException->getTitle(),
+            $errorException->getErrorCode(),
+            $errorException->getMessages()
+        );
     }
 
     /**

@@ -83,13 +83,8 @@ class Handler extends ExceptionHandler
     {
         $e = $this->convertOriginalError($e);
         $checkOriginalException = $this->checkOriginalException($e);
-        if (!$checkOriginalException) return parent::render($request, $e);
-        return Resource::fail(
-            $checkOriginalException["abstract"],
-            $checkOriginalException["title"],
-            $checkOriginalException["code"],
-            $checkOriginalException["messages"],
-        );
+        if ($checkOriginalException) return Resource::failFromException($e);
+        return parent::render($request, $e);
     }
 
     /**
@@ -101,14 +96,11 @@ class Handler extends ExceptionHandler
      * 3. オリジナルエラーでない場合，falseを返却
      *
      * @param Throwable $e
-     * @return array|false
+     * @return bool
      */
-    public function checkOriginalException(Throwable $e): array|false
+    public function checkOriginalException(Throwable $e): bool
     {
-        $e = $this->convertOriginalError($e);
-        if ($e instanceof ExceptionsErrorException) return $e->getError();
-
-        return false;
+        return $e instanceof ExceptionsErrorException;
     }
 
     /**
